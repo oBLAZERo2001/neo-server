@@ -11,4 +11,15 @@ router.post("/", async function (req, res) {
 	}
 });
 
+router.get("/:address", async function (req, res) {
+	try {
+		const disperse = await new Disperse.find({
+			address: req.params.address,
+		})
+		res.send(disperse);
+	} catch (e) {
+		console.error(e);
+	}
+});
+
 module.exports = router;

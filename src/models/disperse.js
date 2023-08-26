@@ -3,14 +3,9 @@ const validator = require("validator");
 
 const DisperseSchema = new mongoose.Schema(
 	{
-		userid: {
-			type: mongoose.Types.ObjectId,
-			required: true,
-		},
 		address: {
 			type: String,
 			trim: true,
-			unique: true,
 			validate(value) {
 				if (!validator.isEthereumAddress(value.toString())) {
 					throw new Error("invalid address");

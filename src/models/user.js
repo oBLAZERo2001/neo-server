@@ -15,11 +15,6 @@ const UserSchema = new mongoose.Schema(
 				}
 			},
 		},
-		displayName: {
-			type: String,
-			trim: true,
-			required: true,
-		},
 		address: {
 			type: String,
 			trim: true,
@@ -36,26 +31,10 @@ const UserSchema = new mongoose.Schema(
 				"https://spriyo.s3.ap-south-1.amazonaws.com/images/default-profile-icon.png",
 			required: true,
 		},
-		disabled: {
-			type: Boolean,
-			required: true,
-			default: false,
-		},
 		tokens: [
 			{
-				token: {
-					type: String,
-					required: true,
-				},
-				createdAt: {
-					type: Date,
-					required: true,
-					default: new Date(),
-				},
-				nonce: {
-					type: Number,
-					required: true,
-				},
+				type: String,
+				required: true,
 			},
 		],
 	},
@@ -72,7 +51,6 @@ UserSchema.methods.toJSON = function () {
 
 	return userObject;
 };
-
 
 UserSchema.pre("save", async function (next) {
 	const user = this;

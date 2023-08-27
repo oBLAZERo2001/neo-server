@@ -18,11 +18,7 @@ const DisperseSchema = new mongoose.Schema(
 		},
 		token: {
 			type: String,
-			validate(value) {
-				if (!validator.isEthereumAddress(value.toString())) {
-					throw new Error("invalid address");
-				}
-			},
+			default: "",
 		},
 	},
 	{
